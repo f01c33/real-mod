@@ -29,6 +29,10 @@ func Mod(x, w float64) float64 {
 	return x + Omul(x, w) - Umul(x+Omul(x, w), w)
 }
 
+func InlineMod(x, w float64) float64 {
+	return x + math.Ceil(x/w)*w - math.Floor((x+math.Ceil(x/w)*w)/w)*w
+}
+
 func main() {
 	x, w := float64(7), float64(3)
 	fmt.Println(x, w, Umul(x, w), Omul(x, w))
@@ -45,5 +49,6 @@ func main() {
 	fmt.Println(x, w, Umul_(x, w), Omul_(x, w))
 	for i := range 20 {
 		fmt.Println(Mod(float64(i-10), w))
+		// fmt.Println(InlineMod(float64(i-10), w))
 	}
 }

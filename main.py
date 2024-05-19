@@ -19,5 +19,8 @@ print(x,w,Uexp(x,w),Oexp(x,w))
 
 Mod = lambda x,w: x+omul(x,w)-umul(x+omul(x,w),w)
 
+inlineMod = lambda x,w: x+math.ceil(x/w)*w-math.floor((x+math.ceil(x/w)*w)/w)*w
+
 for i in range(-10,10,1):
     print(Mod(i,w))
+    # print(inlineMod(i,w))
